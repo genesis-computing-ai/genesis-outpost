@@ -1,0 +1,15 @@
+Genesis Outpost — binary license
+
+Copyright (c) 2026 Genesis Computing, Inc. All rights reserved.
+
+The Genesis Outpost binaries and container images are provided for use with Genesis under
+your agreement with Genesis Computing, or for evaluation under Genesis's evaluation terms.
+You may install and run them in your own environment for that purpose. You may not
+redistribute, sell, sublicense, modify or reverse engineer them, except as the licenses of
+included open-source components allow.
+
+They are provided "as is", without warranty of any kind, except as your agreement with
+Genesis Computing states.
+
+Open-source components included in the binaries, and their licenses and notices, are listed
+in THIRD_PARTY_NOTICES, published with each release.
