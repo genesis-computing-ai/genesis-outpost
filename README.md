@@ -63,6 +63,32 @@ chmod +x genesis-outpost-darwin-arm64
 Evaluation only: it stops when the laptop sleeps or you close the terminal. For anything
 people rely on, run it on a VM, in Docker or in Kubernetes as the Genesis wizard describes.
 
+## Docker and Kubernetes
+
+The container image is published for linux/amd64 and linux/arm64:
+
+```bash
+docker pull ghcr.io/genesis-computing-ai/genesis-outpost:0.3.2
+```
+
+It is distroless (the binary, CA certificates, the LICENSE and `THIRD_PARTY_NOTICES` under
+`/usr/share/doc/genesis-outpost/`), runs as uid 10001, and keeps its state in the volume
+`/var/lib/genesis-outpost`. The Genesis wizard gives you the complete `docker run` command,
+or a ready-to-apply Kubernetes manifest with a Secret, for your Outpost. The settings are
+environment variables, for example:
+
+```bash
+docker run -d --name genesis-outpost --restart unless-stopped \
+  -e GENESIS_ENDPOINT='<your Genesis tunnel endpoint>' \
+  -e OUTPOST_SLOT='<from the wizard>' \
+  -e ALLOWED_DESTINATIONS='db.corp.internal:5432,jira.corp.internal:443' \
+  -v genesis-outpost-state:/var/lib/genesis-outpost \
+  ghcr.io/genesis-computing-ai/genesis-outpost:0.3.2
+```
+
+plus the sign-in settings the wizard shows for your deployment (a Snowflake key pair, a
+Databricks service principal, or a tunnel password).
+
 ## License
 
 The binaries are proprietary; see [LICENSE](LICENSE). Open-source components included in
